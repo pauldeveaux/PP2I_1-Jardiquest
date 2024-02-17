@@ -1,0 +1,84 @@
+{%if user%}
+    {% if user.role =='Proprietaire' %}
+        {% set owner=1 %}
+    {% endif %}
+{% endif %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+<div class="topnav" id="topnav">
+
+    <!-- set active to one of this value to set the position of your page
+    ('user', 'garden', 'quests', 'blog', 'market', 'handlegarden')
+    if you want to display the handle_garden part you need to
+    set owner = 1
+    -->
+
+    <a href="/" class="logo-jardiquest not-responsive">
+        <img src="{{ url_for('static', filename='image/logo/jardiquest-logo.svg') }}">
+    </a>
+    <a href="/profile" class="icon-user not-responsive">
+        {% if active == 'user' %}
+            <img src="{{ url_for('static', filename='image/icon/user-icon-active.png') }}">
+        {% else %}
+            <img src="{{ url_for('static', filename='image/icon/user-icon.png') }}">
+        {% endif %}
+    </a>
+        <a onclick="displayMenu()" class="icon">
+        <img src="{{ url_for('static', filename='image/icon/menu-icon.png') }}" id="icon" onclick="displayMenu()">
+    </a>
+
+    {% if active == 'garden' %}
+        <a href="{{url_for('controller.garden')}}" class="active">Jardin</a>
+    {% else %}
+        <a href="{{url_for('controller.garden')}}">Jardin</a>
+    {% endif %}
+    
+    {% if active == 'quests' %}
+        <a href="{{url_for('controller.list_garden_quests')}}" class="active">Quêtes</a>
+    {% else %}
+        <a href="{{url_for('controller.list_garden_quests')}}">Quêtes</a>
+    {% endif %}
+
+    {% if active == 'blog' %}
+        <a href="{{url_for('controller.blog')}}" class="active">Blog</a>
+    {% else %}
+        <a href="{{url_for('controller.blog')}}" >Blog</a>
+    {% endif %}
+
+    {% if active == 'market' %}
+        <a href="{{url_for('controller.market')}}" class="active">Marché</a>
+    {% else %}
+        <a href="{{url_for('controller.market')}}">Marché</a>
+    {% endif %}
+
+    {% if owner == 1 %}
+        {% if active == 'handlegarden' %}
+            <a href="{{url_for('controller.your_garden')}}" class="active">Gérer jardin</a>
+        {% else %}
+            <a href="{{url_for('controller.your_garden')}}">Gérer jardin</a>
+        {% endif %}
+    {% endif %}
+
+</div>
+<div class="portal-rainbow invert-rainbow"></div>
+
+<script>
+    window.onload = function(){
+            document.onclick = function(e){
+               if(e.target.id !== 'navbar' && e.target.id !== 'icon' && window.innerWidth <= 650 ) {
+                  document.getElementById("topnav").className = "topnav"
+               }
+               else if (e.target.id === 'icon') {
+                    displayMenu()
+               }
+            };
+         };
+    function displayMenu() {
+        let x = document.getElementById("topnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>

@@ -1,0 +1,78 @@
+{% extends "_base.html" %}
+{% block content %}
+<title>Se connecter</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/auth.css') }}">
+
+<div class="portal-container">
+    <div class="centered-element">
+        <div class="portal-rainbow"></div>
+        <div class="portal-content">
+            <div class="image-logo-container">
+                <img class="logo-jardiquest" src="{{ url_for('static', filename='image/logo/jardiquest-logo-text.svg') }}" alt="logo de jardi'quest">
+            </div>
+
+            <hr class="hr-separator">
+
+            <form method="POST" action="/login{{callback}}" class="form-auth">
+                <table>
+                    <tr>
+                        <td rowspan="2">
+                            <img class="field-icon" src="{{ url_for('static', filename='image/icon/user-icon.png') }}">
+                        </td>
+                        <td>
+                            <span>e-mail</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if email is not none %}
+                                <input class="input" type="text" name="email" autofocus="" value={{email}}>
+                            {% else %}
+                                <input class="input" type="text" name="email" autofocus="">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr style="height: 20px"><td></td></tr>
+                    <tr>
+                        <td rowspan="2">
+                            <img class="field-icon" src="{{ url_for('static', filename='image/icon/cadenas-icon.png') }}">
+                        </td>
+                        <td>
+                            <span>mot de passe</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="input" id="password" type="password" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" onclick="toggleDisplayPassword()">
+                            <b style="margin-left: 5px">Afficher</b>
+                        </td>
+                    </tr>
+                </table>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="notification-parent">
+                        <p class="notification error">{{ messages[0] }}</p>
+                    </div>
+                {% endif %}
+                {% endwith %}
+
+                <div class="footer-auth">
+                    <a class="signup-a" href="/signup{{callback}}">Pas de compte ?</a>
+                    <input type="submit" class="submit" value="" />
+                </div>
+            </form>
+        </div>
+
+        <div class="portal-rainbow invert-rainbow"></div>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+
+{% endblock %}

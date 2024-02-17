@@ -1,0 +1,120 @@
+.portal-container {
+    align-self: center;
+    margin: 6% auto auto;
+    width: 100vw;
+    display: flex;
+    padding: 2em 10%;
+}
+
+.display-user {
+    text-align: center;
+    margin: 1em 1em 0 1em;
+}
+
+.litle-hr {
+    margin: 1px 15% 2em;
+}
+
+.align-user-icon {
+    text-align: center;
+}
+
+.align-user-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.centered-element {
+    margin: auto;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--background-secondary);
+}
+
+.input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--green);
+}
+
+.input:focus {
+    outline: 1px dotted var(--green);
+}
+
+.handler-display-data {
+    display: grid;
+    justify-content: center;
+    margin: auto auto auto 5%;
+    grid-auto-flow: column;
+    grid-gap: 50px;
+    grid-template-rows: 60px 60px 60px;
+    grid-template-columns: 49% 49%;
+    padding: 10px;
+}
+
+.handler-display-data > div {
+    margin: 0.8em;
+    font-size: large;
+    box-sizing: border-box;
+}
+
+.handler-display-data div b {
+    color: var(--brown-orange);
+}
+
+.button-panel {
+    margin: 2em 0;
+    display: flex;
+    flex-basis: 33%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button-panel > form > button,
+.button-panel > button {
+    padding: 0.6em;
+    margin: 0.2em 1em;
+    font-size: x-large;
+    cursor: pointer;
+    border: 1px solid var(--background-third);
+    color: var(--background-secondary);
+    border-radius: 9px;
+}
+
+.green {
+    background: var(--green);
+}
+
+.red {
+    background: var(--error);
+}
+
+.error {
+    color: var(--error);
+    font-size: large;
+    align-self: center;
+    text-align: center;
+}
+
+.display-name {
+    font-size: xx-large;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.notification-parent {
+    position: relative;
+    align-self: center;
+    justify-content: center;
+    margin: auto;
+}
+
+@media only screen and (max-width: 800px) {
+    .handler-display-data {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+}
+}

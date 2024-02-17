@@ -1,0 +1,87 @@
+{% extends "_base.html" %}
+{% set active='user' %}
+{% if user.role =='Gerant' %}
+    {% set owner=1 %}
+{% endif %}
+{% include "_navbar.html" %}
+{% block content %}
+
+<title>Profil</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/profile.css') }}">
+
+<div class="portal-container">
+    <div class="centered-element">
+        <div class="align-user-icon">
+            <img src="{{ url_for('static', filename='image/icon/user-icon.png') }}" class="display-user">
+            <br>
+            <span class="display-name">{{ user.name }}<span>
+        </div>
+        <hr class="litle-hr">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="notification-parent">
+                    <p class="notification error">{{ messages[0] }}</p>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div>
+            <form action="/account" method="post" class="handler-display-data" id="update-account">
+                <input type="hidden" name="_method" value="put"/>
+                <div>
+                <b>E-mail</b> <br>
+                    <span>{{user.email}}</span>
+                </div>
+                <div>
+                    <b>Nom</b> <br>
+                    <input class="input" type="text" name="name" autofocus="" value="{{user.name}}">
+                </div>
+                <div>
+                    <b>Nouveau mot de passe</b> <br>
+                    <input class="input" type="password" name="new_password" value="">
+                </div>
+                <div>
+                    <b>Rôle</b> <br>
+                    <span>{{user.role}}</span>
+                </div>
+                <div>
+                    <b>Balance</b> <br>
+                    <span>{{ user.balance }}</span>
+                </div>
+                <div>
+                    <b>Date d'inscription</b> <br>
+                    <span>{{ user.recruitmentDate.strftime('%d-%m-%Y') }}</span>
+                </div>
+            </form>
+
+        </div>
+        <div class="button-panel">
+
+            <button class="green" onclick="updateAccount()">Sauvegarder</button>
+
+            <form action="logout" method="post">
+                <button class="red">Déconnexion</button>
+            </form>
+
+            <form action="account" method="post" id="delete-form">
+                <input type="hidden" name="_method" value="delete" />
+            </form>
+            <button class="red" onclick="modalDelete()">Supprimer</button>
+
+        </div>
+
+    </div>
+</div>
+<script>
+    function modalDelete() {
+        if (confirm("Voulez vous vraiment supprimer votre compte ?")) {
+            document.getElementById("delete-form").submit()
+        }
+    }
+    function updateAccount() {
+        document.getElementById("update-account").submit()
+    }
+</script>
+
+{% endblock %}

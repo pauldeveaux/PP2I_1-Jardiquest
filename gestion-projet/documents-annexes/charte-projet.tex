@@ -1,0 +1,203 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+
+\begin{document}
+\begin{center}
+    \textbf{\color{orange}{\Huge Projet PPII - Charte}}
+\end{center}
+\vspace{0.7cm}
+\section*{\color{orange}Auteurs}
+\begin{tabular}{l|p{8cm}}
+   \textbf{Nom / mél} & \textbf{Qualité / rôle}  \\
+   \hline 
+    DEVEAUX Paul & Membre du projet  \\
+    paul.deveaux@telecomnancy.eu & \\ \hline
+    HORNBERGER Théo & Membre du projet \\
+    theo.hornberger@telecomnancy.eu & \\ \hline
+    TEMPESTINI Terry & Membre du projet \\
+    terry.tempestini@telecomnancy.eu & \\ \hline
+    ARIES Lucas & Chef du projet \\
+    lucas.aries@telecomnancy.eu & \\ \hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\section*{\color{orange}Historique des modifications et révisions de ce document}
+\begin{tabular}{c|p{10cm}}
+   \textbf{N° de version} & \textbf{Description et circonstances de la modification}  \\
+   \hline 
+    V.0.1 & Brouillon: préparation du documents
+    \\ \hline
+    V.0.2 & Relecture, reformulation des phrases et correction
+\end{tabular}
+
+\vspace{0.5cm}
+
+\section*{\color{orange}Validations / autorisations}
+\begin{tabular}{c|p{4cm}|p{6cm}}
+   \textbf{N° de version} & \textbf{Nom / qualité} & \textbf{Commentaires / réserves}
+    \\ \hline
+\end{tabular}
+
+\newpage
+
+
+% ------------------------- Table des matières --------------------------------------------
+
+\begin{center}
+    \textbf{\color{orange}{\Huge Charte-projet}} \\
+    \textbf{\color{blue}{\Large Table des matières}}
+\end{center}
+
+\section*{Résumé}
+\section*{1/ Cadrage}
+\begin{itemize}
+    \item La finalité du projet est la réalisation d'une application web qui a pour but de coordonner les différents participants d'un jardin partagé, et attirer un nouveau public à y participer.
+    \item Le projet est réalisé en première année à Telecom Nancy dans le cadre du module PPII (Projet Pluridisciplinaire d'Informatique Intégrative) en groupe de 4 étudiants.
+    \item Les objectifs de ce projet sont de :  
+    \begin{itemize}
+        \item Mettre en oeuvre la gestion de projet apprise pendant les cours
+        \item Apprendre a travailler à plusieurs sur un même projet.
+        \item De concevoir une application web possédant une partie base de données, web et algorithmique.
+    \end{itemize}
+\end{itemize}
+
+\section*{2/ Déroulement du projet}
+\begin{itemize}
+    \item L'organisation du projet est jalonnée par les différents rendus attendus par l'école. Il n'y a aucun temps sur l'emploi du temps consacré à celui-ci ni de budget, il est réalisé sur le temps libre des différents acteurs du projet.
+    \item Les principaux évènements importants sont les réunions et les livrables imposés par le sujet tels que :
+        \begin{itemize}
+        \item Soutenance Gestion-Projet/État de l'art le 22/10/22.
+        \item Rendu de projet le 06/01/23.
+        \item Soutenance du projet le 14/01/23.
+    \end{itemize}
+    \item Les principaux risques sont les utilisateurs malveillants, et de sous-estimer le temps nécessaire à la réalisation des différentes tâches, et par conséquent de ne pas rendre les livrables dans les délais. Quant aux opportunités, celles-ci sont plutôt nombreuses notamment grâce à la situation économique actuelle.
+\end{itemize}
+
+\newpage
+
+
+
+
+
+
+% ----------------------------------- Cadrage ----------------------------------
+
+
+\begin{center}
+    \textbf{\color{orange}{\Huge Cadrage}} \\
+\end{center}   
+    \section*{\color{orange}{\Large Contexte}} 
+    Les ressources naturelles deviennent de plus en plus rares et de plus en plus chères. La France, à l’instar de nombreux pays, est entrée dans un plan de sobriété économique. Cela se traduit par des mesures mises en place pour réduire notre consommation de ressources naturelles mais aussi notre consommation énergétique. 
+    L’une des nombreuses idées pour contribuer à ce projet est d’inciter les consommateurs à se fournir leur alimentation via des circuits courts, c'est-à-dire des circuits impliquant le moins d’intermédiaires possibles, généralement aucun voir un seul. Cela permet alors de réduire la consommation énergétique liée au transport de marchandises, et donc leur coût. \\
+    En parallèle, de nombreuses collectivités territoriales ont mis en place des jardins partagés, ce sont des jardins gérés et animés par des habitants d’un même quartier. En plus d’être une bonne alternative aux circuits courts d’un point de vue écologique et économique, cela permet de recréer un lien social, ce qui est le bienvenu après la crise de la Covid. \\
+    
+    L'objectif du projet est donc de créer un site web divertissant, ludique et simple d’utilisation qui améliorera la communication et la coordination des différents participants d’un jardin partagé. Il permettra aussi de répartir les récoltes de façon équitable. Voici les fonctions principales que l'application doit prendre en compte :
+    \begin{itemize}
+        \item Permettre aux utilisateurs de créer un jardin en renseignant les récoltes qui y sont effectuées, le nombre de places disponibles pour y participer, le lieu, ...
+        \item Permettre aux utilisateurs de rejoindre un jardin existant.
+        \item Créer une économie liée à un jardin en particulier. Chaque jardin possèdera sa propre monnaie, elle ne pourra pas être utilisée dans d’autres jardins.
+        \item Permettre la création de quêtes. Leur objectif les besoins nécessaires à l’entretien des jardins. Les personnes les effectuant seront récompensées d’une certaine quantité de monnaie. Ces quêtes pourront être ponctuelles ou cycliques. Si elles sont cycliques, le délai avant qu'elles ne se répètent pourra être paramétré.
+        \item Permettre la gestion d'un marché lié à un jardin. Les gérants du jardin pourront y proposer les récoltes du jardin contre de la monnaie. \item Permettre la communication entre différents participants du jardin.
+        \item Permettre aux utilisateurs de déposer des avis sur d'autres utilisateurs 
+        \item Intégrer un système de niveau qui récompense les utilisateurs actifs, via des quêtes qu'ils effectuent ou des avis qu'ils reçoivent.
+    \end{itemize}
+
+    De plus, l'application doit être réalisé en python, doit s'appuyer sur une base de données et doit être accessible via le web.\\
+    
+    La clientèle cible est donc tout d'abord les participants et gérants des jardins partagés, pour lesquels la communication doit être simplifiée. Cela se traduit par la liste des tâches restantes à accomplir dans le jardin et par le marché qui doit rendre le partage des récoltes plus équitables, mais également par un outil de discussion en ligne.
+    Une autre clientèle, qui est novice des jardins, est visé. La ludification de l'application doit leur permettre d'appréhender le jardinage de manière plus amusante.
+    
+    
+    \section*{\color{orange}{\Large Finalités}}
+    Ce projet a pour but de coordonner les différents participants d'un jardin partagé en aidant les gérants à mieux répartir les tâches nécessaires à l'entretien du jardin, ainsi qu'à mieux partager les récoltes. Il a également pour but d'inciter un nouveau public à s'intéresser aux jardins partagés, notamment les plus jeunes, grâce à de la ludification.\\
+    
+    La force du projet est qu'il est constitué d'une équipe qui a déjà acquis de l'expérience dans le développement d'application et qui a déjà vécu des conditions de travail en équipe similaires. Les tâches seront donc en théorie plus vite réalisées et mieux coordonnées qu'avec une équipe n'ayant jamais travaillé dans ces conditions. De plus, le projet ne comprend pas de budget, ce qui facilite la gestion de projet.\\
+    Concernant les faiblesses, aucun des membres de l'équipe projet est spécialisé dans le front-end (mise en page de l'application). Les tâches relatives au front-end seront donc plus laborieuses. Les délais pour le projet sont également assez courts et l'équipe ne peut pas consacrer l'entièreté de son temps de travail sur le projet. Une très bonne organisation et répartition des tâches sera de mise. Pour finir, le marché est relativement méconnu de l'équipe. Les membres possèdent peu de connaissance dans le domaine du jardinage.\\
+    
+    
+    
+    \section*{\color{orange}{\Large Livrables}}
+    Tout au long du projet, l'équipe projet devra rendre plusieurs livrables :
+    \begin{itemize}
+        \item Ensemble des fichiers sources des implémentations sur le dépot gitlab.
+        \item Documentation sur le dépot gitlab.
+        \item Ensemble des documents produits relatifs à la gestion de projet.
+        \item Rapport synthétique rédigé en LaTeX du travail sur l'état de l'art, décrivant l'application proposé et présentant en détails la gestion du projet. \textit{(20/10/2022)}
+        \item Présentation en beamer ou Powerpoint de l'état de l'art réalisé, du concept de l'application visée et de son innovation. \textit{(22/10/2022)}
+        \item Rapport rédigé en LaTeX synthétisant le travail et qui explique la conception et l'implémentation de l'application, une démonstration des tests et des performances, et l'explication de la gestion de projet. \textit{(06/01/2023)}
+        \item Soutenance en beamer ou Powerpoint comportant des explications sur la conception et l'implémentation des différentes parties de l'application, une démonstration des fonctions, et des réponses aux questions. \textit{(14/01/2023)}
+        
+    \end{itemize}
+
+
+
+
+% ------------------------------ Déroulement du projet ------------------------------
+\newpage
+\begin{center}
+    \textbf{\color{orange}{\Huge Déroulement du projet}} \\
+\end{center}
+\section*{\color{orange}{\Large Organisation / ressources, budget}}
+\begin{itemize}
+    \item Le livret de mission du projet est le suivant : \\ 
+    \textit{"Votre objectif est, en mettant en œuvre les principes de Gestion de Projet appris et
+    ceux en cours d’acquisition dans le cours de gestion de projet et en mobilisant les acquis
+    scientifiques et techniques du module CS54, de concevoir et d’implémenter une application
+    innovante dédiée à l’optimisation des ressources dans les vergers et potagers du territoire}
+    \item Rôles et responsabilités
+    \begin{itemize}
+        \item Équipe projet - Réalisation des différents livrables exigés.
+        \item Équipe enseignante - Client du projet fixe les limites et demande les livrables.
+    \end{itemize}
+    \item Budget
+    \begin{itemize}
+        \item Financier 0€.
+        \item Temps libre de 4 étudiants.
+        \item Corps enseignant lié au module PPII.
+    \end{itemize}
+    
+\end{itemize}
+\section*{\color{orange}{\Large Jalons : échéancier / évènements importants }}
+Les différents évènements importants sont les réunions qui sont très régulières dues à la réalisation du projet avec les méthodes AGILES, mais aussi les différents livrables exigés qui rythme la vitesse de réalisation du projet.
+\vspace{0.5cm} \\
+La plupart des jalons importants sont répertoriés à l'aide de la todo-list suivante :
+
+\begin{tabular}{|p{4cm}|c|c|c|p{3cm}|}
+    \hline
+    \textbf{Tâche} & \textbf{Pilote} & \textbf{Échéance} & \textbf{Durée} & \textbf{Commentaire}\\
+    \hline
+    Réfléchir au concept de l'application informatique & Équipe projet & 14/10/22 & 2 jours & Préparation de la réunion N°2\\
+    \hline
+    Réalisation de l'état de l'art & Terry, Théo & 17/10/22 & 3 jours & Documents LaTeX, analyse existant / concurrence\\
+    \hline
+    Gestion de projet & Paul, Lucas & 17/10/22 & 3 jours & SWOT, Todo List, charte du projet, cahier des charges \\
+    \hline
+    Regroupement travaux - Document Rendu 1 & Équipe projet & 20/10/22 & 3 jours & Documents a rendre à 18H \\
+    \hline 
+    Réalisation diaporama & Équipe projet & 21/10/22 & 2 jours & Réalisation et préparation de la présentation\\
+    \hline
+    Soutenance N°1 & Équipe projet & 22/10/22 & 0 jours & Samedi matin\\
+    \hline 
+    Compléter gestion de projet partie informatique & Équipe projet & & & Attente de plus d'informations\\
+    \hline
+    Rendu de projet & Équipe projet & 06/01/23 & & Gitlab\\
+    \hline
+    Réalisation diaporama N°2 & Équipe projet & 13/01/23 & 7 jours & Réalisation et préparation de la présentation\\
+    \hline
+    Soutenance N°2 & Équipe projet & 14/01/23 & & Fin du projet\\
+    \hline
+    Réflexion sur le projet et son organisation & Équipe projet & x & x & x\\
+    \hline
+    
+\end{tabular}
+
+\section*{\color{orange}{\Large Risques et opportunités}}
+Il y a différents risques et opportunités liés au déroulement du projet. \\ 
+La principale opportunité pour le déroulement du projet est liée au corps enseignant qui représente un groupe d'experts qui est disponible pour répondre aux éventuelles questions, ou résoudre d'éventuels problèmes. \\ \\ 
+De plus les jardins partagés deviennent de plus en plus courants notamment grâce à l'inflation des prix de l’alimentation, ce qui incite à produire et à manger local, mais aussi le plan de relance (France Relance) pour les jardins partagés. Le fait qu'aucun concurrent n'est implanté nationalement et ne domine le marché est également une grande opportunité. \\  \\ 
+Quant aux risques possibles du projet, ceux-ci sont multiples :  \\ 
+Que ce soit organisationnel, avec notamment des dates imposées pour les livrables et donc la possibilité de ne pas réussir à être dans les délais, mais aussi le fait qu'un nombre conséquent de projets concurrents risque de voir le jour en même temps que le notre. \\ 
+De plus, le plus grand risque du projet est que celui-ci repose sur la bienveillance des utilisateurs et l'implication de ceux-ci dans leurs jardins.
+\end{document}

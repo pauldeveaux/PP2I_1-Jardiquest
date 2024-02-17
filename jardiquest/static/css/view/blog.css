@@ -1,0 +1,84 @@
+.portal-container {
+    align-self: center;
+    width: 100vw;
+    display: flex;
+    padding: 2em 10%;
+}
+
+.centered-element {
+    margin: auto;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--background-secondary);
+}
+
+.align-user-icon {
+    text-align: center;
+}
+
+.display-name {
+    font-size: xx-large;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.litle-hr {
+    margin: 1px 15% 2em;
+}
+
+.messages{
+    align-self: center;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10% ;
+}
+
+.metadata-message {
+    border-bottom: 2px dotted var(--green);
+    width: fit-content;
+}
+
+.user{
+    text-align: left;
+    font-size: larger;
+    color: var(--brown-orange);
+}
+
+.date-msg{
+    text-align: right;
+    margin-left: 2em;
+    font-size: smaller;
+    color: var(--grey);
+}
+
+.msg{
+    margin-top: 3px;
+    text-align: justify;
+}
+
+.new-messages{
+    border-top: 2px solid var(--green);
+    margin: 5% 10% 2%;
+    align-items: center;
+    justify-content: center;
+    display : flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+#msg{
+    width: 90%;
+    height: 3em;
+}
+
+.msg-button {
+    padding: 0.2em ;
+    margin: 0.4em 1em 0.2em;
+    font-size: x-large;
+    cursor: pointer;
+    border: 1px solid var(--green);
+    color: var(--brown-orange);
+    border-radius: 4px;
+}

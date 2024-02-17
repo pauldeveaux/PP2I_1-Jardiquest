@@ -1,0 +1,10 @@
+{% extends "quests_list.html" %}
+{% block css %}
+
+<title>Liste Quêtes</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/quests/garden_quests_list.css') }}">
+{% endblock %}
+
+{% block message_no_quest %}
+<p id="message_no_quest">Aucune quête n'est actuellement disponible</p>
+{% endblock %}

@@ -1,0 +1,41 @@
+Delete from quete;
+Delete from jardin;
+Delete from commande;
+Delete from catalogue;
+Delete from recolte;
+Delete from user;
+
+Insert into jardin values(1,"Jardiland","dollars", "a descr", "Champenoux","3 rue des champs", 2);
+Insert into jardin values(2,"GardeningCity","golds", "another descr", "Nancy", "chez moi", 0);
+
+Insert into user values('a@gmail.com','sha256$9cfxB8kmSEenq16c$9b3b4f6d3b2ff92a7006290c78329265d1b4f455cfe70fc65ae2411e524853de','a','Proprietaire',1000,CURRENT_DATE,1);
+Insert into user values('b@gmail.com','sha256$9cfxB8kmSEenq16c$9b3b4f6d3b2ff92a7006290c78329265d1b4f455cfe70fc65ae2411e524853de','b','Participant',1000,CURRENT_DATE,1);
+
+Insert into quete(idquete,title,description,reward,id_jardin, startingdate, timebeforeexpiration) values(1,"Arrosage","Arroser les choux",5,1, CURRENT_DATE, 1);
+Insert into quete(idquete,title,description,reward,id_jardin, estimatedtime, startingdate, timebeforeexpiration) values(2,"Planter","Une description",9,1,134, CURRENT_DATE, 2);
+Insert into quete(idquete,title,description,reward,id_jardin, startingdate, timebeforeexpiration, estimatedtime, periodicity, accomplished) values(3,"Désherber le jardin","Il faut enlever les mauvaises herbes",189,1, CURRENT_DATE, 6,138, true, false);
+Insert into quete(idquete,title,description,reward,id_jardin, startingdate, timebeforeexpiration, estimatedtime, periodicity, accomplished) values(7,"a","cc",189,1, date("2022-12-13"), 4,58, false, false);
+Insert into quete(idquete,title,description,reward,id_jardin, startingdate, timebeforeexpiration, estimatedtime, periodicity, accomplished) values(19,"b","cc2",20,1, date("2022-12-19"), 2,58,true, false);
+
+
+Insert into quete(idquete,title,description,reward,id_jardin, estimatedtime, startingdate, timebeforeexpiration) values(4,"Arrosage","Arroser les patates",5,2, 120, date("2022-12-13"), 5);
+Insert into quete(idquete,title,description,reward,id_jardin, startingdate, timebeforeexpiration) values(5,"Planter","Planter les patates",9,2, date("2022-12-13"), 3);
+
+Insert into recolte values('adba2', 5, CURRENT_DATE, 6, NULL, 1, 1);
+Insert into recolte values('adbaze2', 4, CURRENT_DATE, 3, NULL, 1, 1);
+Insert into recolte values('abaze2', 6, CURRENT_DATE, 2, NULL, 1, 1);
+Insert into recolte values('aze2', 4.2, CURRENT_DATE, 5, NULL, 1, 1);
+Insert into recolte values('aazedbaze2', 3.1, CURRENT_DATE, 4.3, NULL, 1, 1);
+Insert into recolte values('adbafazze2', 9, CURRENT_DATE, 3.5, NULL, 1, 1);
+Insert into recolte values('adbazefeq2', 5, CURRENT_DATE, 4.1, NULL, 1, 1);
+Insert into recolte values('adbazazeacaze2', 13, CURRENT_DATE, 3.9, NULL, 1, 1);
+Insert into recolte values('adbazefazraze2', 2, CURRENT_DATE, 5, NULL, 1, 1);
+
+Insert into recolte values('cnaz8daz', 9, CURRENT_DATE, 2, NULL, 5, 1);
+Insert into recolte values('cnaz8dzaeaaz', 8, CURRENT_DATE, 4, NULL, 5, 1);
+Insert into recolte values('azdjazb3', 3, CURRENT_DATE, 9, NULL, 19, 1);
+Insert into recolte values('6az3rf', 4, CURRENT_DATE, 4, NULL, 38, 1);
+Insert into recolte values('8ncaz3r', 2, CURRENT_DATE, 5, NULL, 96, 1);
+Insert into recolte values('8ncazazze', 2, CURRENT_DATE, 5, NULL, 96, 2);
+
+Insert into Commande values('abcdef', 5, CURRENT_DATE, False, 30, 'b@gmail.com', 'adba2');

@@ -1,0 +1,206 @@
+.info_panier{
+    padding-top : 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.message_suggestion{
+    font-size: large;
+    color: var(--brown-orange);
+    text-align: center;
+}
+
+.prix_panier{
+    display: inline-block;
+    color: var(--brown-orange);
+    font-size: large;
+}
+
+.cost{
+    color: var(--green);
+}
+
+#market{
+    margin : 10px 20px 3em 30px;
+    display : flex;
+    flex-direction: column;
+    gap : 10px;
+}
+
+#market_top{
+    padding-top: 1em;
+    font-size: 1.2em;
+    margin-left : 1em;
+}
+
+#market_filters {
+    margin-left : 4em;
+    display : flex;
+    gap : 10px;
+}
+
+#market_filters p{
+    color : grey;
+    font-size: 1em;
+}
+
+#market_filters select{
+    height : 2.5em;
+    border: 1px solid var(--grey); 
+    padding-left: 5px;
+    min-width : 150px;
+    color : grey; 
+    font-size: 0.9em;
+}
+
+#research_bar {
+    background-image: url('/static/image/icon/search_icon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    padding: 12px 20px 12px 10px; /* Add some padding */
+    border: 1px solid var(--grey); 
+    font-size: 0.9em;
+    height : 2.5em;
+    margin-bottom: 12px; /* Add some space below the input */
+    color : grey;
+    
+}
+
+.buy button{
+    margin-top: 2px;
+    padding: 8px;
+    font-size: large;
+    width: 9em;
+    text-align: center;
+}
+
+button{
+    cursor: pointer;
+}
+
+.buy a:link { text-decoration: none; }
+
+.buy {
+    margin-left: auto;
+}
+
+#research_barsearch::placeholder {
+    color: grey;
+}
+
+#market_filters{
+    display : flex;
+}
+
+
+#market_no_product{
+    margin-left : 5em;
+}
+
+
+#market_products{
+    margin : 20px 20px 3em 30px;
+    display : flex;
+    flex-direction: column;
+    gap : 10px;
+}
+
+
+.product{
+    display : grid;
+    column-gap: 8px;
+    border : 1px solid black;
+    border-radius : 5px;
+    box-shadow: 1px 1px 1px black;
+    align-self: center;
+    min-height: 50px;
+    width : 90%;
+    background-color: #F7F7F7;
+    grid-template-columns: 1fr 8fr 4fr;
+}
+
+.product_img{
+    grid-column: 1;
+    grid-row: 1/4;
+    object-fit: cover;
+    margin : 2px;
+    max-width : 6em;
+    border-radius: 80%;
+}
+
+.product_type{
+    grid-row : 1;
+    grid-column : 2;
+    color : var(--brown-orange);
+    font-size: 0.9em;
+    margin-left: 5px;
+    border-right: 1px black solid;
+}
+
+.product_name{
+    grid-row : 2;
+    grid-column : 2;
+    color : black;
+    margin-left: 5px;
+    border-right: 1px black solid;
+}
+
+.product_name p{
+    color : inherit;
+    text-decoration: none;
+}
+
+.product_quantity{
+    grid-row : 3;
+    grid-column : 2;
+    color : var(--green);
+    font-size: 0.9em;
+    font-style: italic;
+    margin-left: 5px;
+    border-right: 1px black solid;
+}
+
+.product_quantity p{
+    color : inherit;
+}
+
+.product_cheaper_price{
+    grid-row : 2;
+    grid-column : 3;
+    color : var(--green);
+    padding-left: 5px;
+}
+
+.product_cheaper_price p{
+    color : inherit;
+}
+
+#user_golds{
+    padding: 8px;
+    font-size: large;
+    margin-left: auto;
+    text-align: center;
+    width: 9em;
+    background-color: var(--background-secondary);
+    opacity: 0.9;
+    border-radius: 5px;
+    height: 2em;
+}
+
+a {
+    text-decoration: none;
+  }
+
+.limit_form{
+    display: inline-block;
+}
+
+.buy_limit{
+    width: 5em;
+}
+
+.modal-open{overflow:hidden}.modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1050;display:none;overflow:hidden;-webkit-overflow-scrolling:touch;outline:0}.modal.fade .modal-dialog{-webkit-transform:translate(0,-25%);-ms-transform:translate(0,-25%);-o-transform:translate(0,-25%);transform:translate(0,-25%);-webkit-transition:-webkit-transform .3s ease-out;-o-transition:-o-transform .3s ease-out;transition:-webkit-transform .3s ease-out;transition:transform .3s ease-out;transition:transform .3s ease-out,-webkit-transform .3s ease-out,-o-transform .3s ease-out}.modal.in .modal-dialog{-webkit-transform:translate(0,0);-ms-transform:translate(0,0);-o-transform:translate(0,0);transform:translate(0,0)}.modal-open .modal{overflow-x:hidden;overflow-y:auto}.modal-dialog{position:relative;width:auto;margin:10px}.modal-content{position:relative;background-color:#fff;background-clip:padding-box;border:1px solid #999;border:1px solid rgba(0,0,0,.2);border-radius:6px;-webkit-box-shadow:0 3px 9px rgba(0,0,0,.5);box-shadow:0 3px 9px rgba(0,0,0,.5);outline:0}.modal-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1040;background-color:#000}.modal-backdrop.fade{filter:alpha(opacity=0);opacity:0}.modal-backdrop.in{filter:alpha(opacity=50);opacity:.5}.modal-header{padding:15px;border-bottom:1px solid #e5e5e5}.modal-header .close{margin-top:-2px}.modal-title{margin:0;line-height:1.42857143}.modal-body{position:relative;padding:15px}.modal-footer{padding:15px;text-align:right;border-top:1px solid #e5e5e5}.modal-footer .btn+.btn{margin-bottom:0;margin-left:5px}.modal-footer .btn-group .btn+.btn{margin-left:-1px}.modal-footer .btn-block+.btn-block{margin-left:0}.modal-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}@media (min-width:768px){.modal-dialog{width:600px;margin:30px auto}.modal-content{-webkit-box-shadow:0 5px 15px rgba(0,0,0,.5);box-shadow:0 5px 15px rgba(0,0,0,.5)}.modal-sm{width:300px}}@media (min-width:992px){.modal-lg{width:900px}}
+.modal-footer:after,.modal-footer:before,.modal-header:after,.modal-header:before,.nav:after,.nav:before,.navbar-collapse:after,.navbar-collapse:before,.navbar-header:after,.navbar-header:before,.navbar:after,.navbar:before,.pager:after,.pager:before,.panel-body:after,.panel-body:before,.row:after,.row:before{display:table;content:" "}.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.form-horizontal .form-group:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}

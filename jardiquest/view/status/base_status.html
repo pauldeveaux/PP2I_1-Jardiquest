@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+{% block content %}
+<link rel="stylesheet" href="static/css/status/base_status.css">
+<title>{{status}} : {{title}}</title>
+
+<div class="portal-container">
+    <div class="centered-element">
+        <div class="portal-rainbow"></div>
+
+        <div class="content">
+            <h1 class="title-page">{{status}} : {{title}}</h1>
+            <p class="msg">{{msg}}</p>
+        </div>
+
+        <div class="portal-rainbow invert-rainbow"></div>
+    </div>
+</div>
+
+{% endblock %}

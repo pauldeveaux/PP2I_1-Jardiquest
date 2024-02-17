@@ -1,0 +1,89 @@
+{% extends "_base.html" %}
+{% block content %}
+
+{% set active="market" %}
+{% include "_navbar.html" %}
+<title>Marché</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/market/market.css') }}">
+
+<div id="market">
+    <div id="market_top">
+        <p>Que voulez-vous acheter ?</p>
+    </div>
+    
+    <div id="market_filters">
+        <div id="market_search_by_name">
+            <p>Nom : </p>
+            <input type="text" id="research_bar" class="research_bar" placeholder="Rechercher un article">         
+        </div>
+
+        <div id="market_filters_type">
+            <p>Type : </p>
+            <select name="filter_type" id="filter_type">
+                <option value="all">Tous</option>
+                <option value="fruit">Fruit</option>
+                <option value="légume">Légume</option>
+                <option value="plante aromatique">Plante aromatique</option>
+            </select>   
+        </div>
+
+        <div id="market_sort">
+            <p>Trier par :</p>
+            <select name="sort_products" id="sort_products">
+                <option value="name">Nom</option>
+                <option value="price">Prix</option>
+                <option value="type">Type</option>
+                <option value="quantity">Quantité</option>
+            </select>
+        </div>
+
+        <div class="suggestion_button">
+            <button>
+                <a href="{{url_for('controller.suggestion')}}">Suggestion</a>
+            </button>
+        </div>
+        <div class="history_button">
+            <button>
+                <a href="{{url_for('controller.user_orders')}}">Mes commandes</a>
+            </button>
+        </div>
+    </div>
+
+    {% if not produits %}
+        <div id="market_no_product">
+            <p>Aucun produit n'est actuellement disponible</p>	
+        </div>
+    {% else %}
+    <div id="market_products">
+        {% for produit in produits %}
+
+        {% set url = url_for('controller.market_product', product = produit.name ) %} 
+        <div class="product searching_items" style="cursor: pointer;" onclick="window.location='{{url}}';">
+            <img src="{{ url_for('static', filename='image/vegetables/' + produit.imagePath) }}" alt="{{ produit.name }}" class="product_img">
+            <div class="product_type">
+                <p class="type">{{ produit.type }}</p>
+            </div>
+
+            <div class="product_name searching_property">
+                <p class="name">{{ produit.name }}</a>
+            </div>
+            
+            <div class="product_quantity">
+                <p><span class="quantity_float">{{ "%.2f" % produit.quantity }}</span> kg disponibles</p>
+            </div>
+
+            <div class="product_cheaper_price">
+                <p>Le moins cher : <span class="price">{{ "%.2f" % produit.cheaper_price }}</span> {{ garden.moneyName }}/kg</p>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+</div>
+
+<script src="{{ url_for('static', filename='js/market.js') }}"></script>
+<script src="{{ url_for('static', filename='js/research_bar.js') }}"></script>
+{% endblock %}

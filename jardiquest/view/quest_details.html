@@ -1,0 +1,78 @@
+{% extends "_base.html" %}
+{% block content %}
+
+{% set active="quests" %}
+{% include "_navbar.html" %}
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/quests/quest_details.css') }}">
+
+
+<div id="quest">
+    <div id="quest_header">
+        {% if quest.id_user == user %}
+            <a id="link_back" href="{{ url_for('controller.list_user_quests') }}"><img src="{{ url_for('static', filename='image/icon/back-arrow-icon.png') }}" alt="back arrow" id="back_arrow"></a>
+        {% elif quest.id_user == None %}
+            <a id="link_back" href="{{ url_for('controller.list_garden_quests') }}"><img src="{{ url_for('static', filename='image/icon/back-arrow-icon.png') }}" alt="back arrow" id="back_arrow"></a>
+        {% endif %}
+
+
+        <div id="quest_title">
+            <h2>{{quest.title}}</h2>
+        </div>
+        
+        <div id="time_left">
+            {% set timeLeft = quest.timeBeforeExpiration - (today - quest.startingDate).days %}
+            <p>Temps restant : {{ timeLeft }} {% if timeLeft > 1 %} jours {% else %} jour {% endif %}</p>
+        </div>
+        
+        <div id="estimated_time">
+            {% if quest.estimatedTime %}
+                {% set minutes = quest.estimatedTime%60 %}
+                {% set hours = quest.estimatedTime//60 %}
+        
+                <p>
+                    Temps estimé :
+                    {% if hours > 0 %}
+                        {{ hours }}h
+                    {% endif %}
+                    {{ minutes }}min
+                </p>
+        
+            {% endif %}
+        </div>
+    </div>
+    
+    <div id="quest_content">
+        <div id="quest_description">
+            <p>{{quest.description}}</p>
+        </div> 
+    </div>
+    
+    <div id="reward">
+        <p>Vous recevrez : {{ quest.reward }} {{ garden.moneyName }}</p>
+    </div>
+
+    {% if user %}
+        <div id="buttons_quest">
+            
+            {% if quest.id_user == user %}
+                <form action="{{ url_for('controller.cancel_quest', quest_id = quest.idQuete) }}" method="post">
+                    <input type="hidden" name="quest_id" value="{{quest.idQuete}}"/>
+                    <input name="cancel" type="submit" id="button_cancel_quest" value="Abandonner la quête"/>
+                </form>
+                <form action="{{ url_for('controller.complete_quest', quest_id = quest.idQuete) }}" method="post">
+                    <input type="hidden" name="quest_id" value="{{quest.idQuete}}"/>
+                    <input name="complete" type="submit" id="button_finish_quest" value="Finir la quête"/>
+                </form>
+
+            {% elif quest.id_user == None %}
+                <form action="{{ url_for('controller.accept_quest', quest_id = quest.idQuete) }}" method="post">
+                    <input type="hidden" name="quest_id" value="{{quest.idQuete}}"/>
+                    <input name="accept" type="submit" id="button_accept_quest" value="Accepter la quête"/>
+                </form>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

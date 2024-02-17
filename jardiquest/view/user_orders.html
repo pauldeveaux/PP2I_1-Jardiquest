@@ -1,0 +1,59 @@
+{% extends "_base.html" %}
+{% block content %}
+{% set active="market" %}
+{% include "_navbar.html" %}
+
+
+<title>Historique</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/market/user_orders.css') }}">
+
+<div id="orders_container">
+    <div id="orders_top">
+        <p>Votre historique d'achat :</p>
+    </div>
+
+    <div id="orders_filters">
+        <div id="orders_search_by_username">
+            <p>Produit </p>
+            <input type="text" id="research_bar" class="research_bar" >         
+        </div>
+    
+        <div id="order_filter_state">
+            <p>Etat de la commande : </p>
+            <select name="filter_state" id="filter_states">
+                <option value="all">Tous</option>
+                <option value="not_finished">En attente</option>
+                <option value="finished">Commandes finalisées</option>
+            </select>   
+        </div>
+    </div>
+
+    {% if orders|length == 0 %}
+        <div id="no_orders">
+            <p>Vous n'avez encore effectué aucun achat.</p>
+        </div>
+    {% endif %}
+    <div id="orders">
+        {% for order in orders %}
+            <div class="order searching_items">
+                <div class="product searching_property"><p>{{ order.productName }}</p></div>
+                <div class="quantity"><p>{{ "%.2f" % order.quantite }} kg</p></div>
+                <div class="price"><p>Prix : {{ "%.2f" % order.cout }} {{ garden.moneyName}}</p></div>
+                <div class="date_achat"><p>Date d&#39;achat : <span class="date">{{ order.dateAchat }}</span></p></div>
+                <div class="state"><p>
+                    {% if order.traitee %}
+                    <span class="state_value" style="display:none">finished</span>
+                        Commande finalisée par le propriétaire de votre jardin  
+                    {%else %}
+                        <span class="state_value" style="display:none">not_finished</span>
+                        Commande en attente
+                    {% endif %}
+                </p></div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/research_bar.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/orders.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,51 @@
+/* A css file link to every page of the website so be careful when adding or removing something here (maybe create another .css ?) */
+:root {
+    --grey: #6A645A;
+    --green: #5D7052;
+    --yellow-white: #E3CD8B;
+    --brown-orange: #C18845;
+    --taupe:  #F0BE86;
+    --background-secondary: #d9d9d9;
+    --background-third: #d2d2d2;
+    --background-primary: #fff;
+    --error: #AF3800;
+}
+
+@font-face {
+    font-family: jardiquest;
+    src: url('/static/fonts/FiraSans.ttf');
+}
+
+body {
+    background: var(--background-primary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: jardiquest;
+    box-sizing: border-box;
+    color: var(--green);
+}
+
+hr {
+    border: 1px solid var(--green);
+    background: none;
+    box-shadow: none;
+    outline: none;
+}
+
+input {
+    color: var(--green);
+    font-size: large;
+}
+
+table {
+    border-spacing: 0 2px;
+}
+
+.notification {
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}

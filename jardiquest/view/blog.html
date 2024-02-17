@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+{% set active='blog' %}
+{% include "_navbar.html" %}
+{% block content %}
+
+<title>Blog</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/blog.css') }}">
+
+
+<div class="portal-container">
+    <div class="centered-element">
+        <div class="align-user-icon">
+            <br>
+            <span class="display-name">Blog du Jardin</span>
+        </div>
+        <hr class="litle-hr">
+        <div>
+            {% for m in messages %}
+            <div class="messages">
+                <p class="metadata-message">
+                    <span class="user">{{m.user.name}}</span>
+                    <span class="date-msg">Publié le {{m.timestamps.strftime('%d-%m-%Y')}}</span>
+                </p>
+                <span class="msg">{{m.message.replace('\n', '<br>') | safe}}</span>
+            </div> 
+            {%endfor%}
+        </div>
+
+        <div>
+            
+            <form class="new-messages" action="/blog" method="post">
+                <p>Annoncez-ici les informations importantes pour le jardin !</p>
+                <textarea id="msg" name="msg" maxlength="1000"></textarea>
+                <button class="msg-button">Envoyez votre annonce</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

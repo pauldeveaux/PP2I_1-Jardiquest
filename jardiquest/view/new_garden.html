@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+{% set active='garden' %}
+{% include "_navbar.html" %}
+{% block content %}
+
+<title>Créer Jardin</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/new_garden.css') }}">
+
+<title>Créer un jardin</title>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="notification-parent">
+                    <p class="notification error">{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<div class="portal-container">
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            <input class="input" type="text" name="nom" placeholder="Nom du jardin" required oninvalid="this.setCustomValidity('Veuillez renseigner le nom du jardin')" onchange="this.setCustomValidity('')" type="text">
+            <textarea class="area" placeholder="Description du jardin" type="textarea" name="description" id="description" rows="4" cols="50"></textarea>
+            <input class="input" type="text" name="monnaie" placeholder="Nom de la monnaie" required oninvalid="this.setCustomValidity('Veuillez renseigner la monnaie')" onchange="this.setCustomValidity('')" type="text">
+            <input class="input" type="text" name="adresse" placeholder="Adresse" required oninvalid="this.setCustomValidity('Veuillez renseigner l\'adresse')" onchange="this.setCustomValidity('')" type="text">
+            <input class="input" type="text" name="ville" placeholder="Ville" required oninvalid="this.setCustomValidity('Veuillez renseigner la ville')" onchange="this.setCustomValidity('')" type="text">
+
+            <input class="input" type="file" name="file" />
+
+            <div class="display_buttons_inline">
+                <input class="button" type="submit" value="Créer">
+                <a href="{{url_for('controller.garden')}}"><input type="button" value="Annuler"></a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

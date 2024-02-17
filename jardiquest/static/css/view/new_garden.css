@@ -1,0 +1,56 @@
+.portal-container {
+    align-self: center;
+    margin: auto auto;
+    width: 100vw;
+    padding: 2em 10%;
+}
+
+.container{
+    background-color: var(--background-secondary);
+}
+
+form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.area{
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    font-size: large;
+    width: 30%;
+}
+
+.input {
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    font-size: large;
+    width: 30%;
+}
+
+button, .button{
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    font-size: large;
+    width: 6em;
+}
+
+a:link { text-decoration: none; }
+
+.display_buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.display_buttons_inline{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.display_buttons_inline input{
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    font-size: large;
+    width: 6em;
+}

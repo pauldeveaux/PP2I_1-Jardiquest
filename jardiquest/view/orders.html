@@ -1,0 +1,57 @@
+{% extends "_base.html" %}
+{% set active='user' %}
+{% set active="handlegarden" %}
+{% include "_navbar.html" %}
+{% block content %}
+
+<title>Historique Achat</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/market/orders.css') }}">
+
+<div id="orders_container">
+    <div id="orders_top">
+        <p>Ce que les membres de votre jardin ont achetés :</p>
+    </div>
+
+    <div id="orders_filters">
+        <div id="orders_search_by_username">
+            <p>Nom d'utilisateur : </p>
+            <input type="text" id="research_bar" class="research_bar" >         
+        </div>
+    
+        <div id="orders_sort">
+            <p>Trier par :</p>
+            <select name="sort_orders" id="sort_orders">
+                <option value="date">Date</option>
+                <option value="user">Nom d'utilisateur</option>
+            </select>
+        </div>
+    </div>
+    
+    {% if orders|length == 0 %}
+        <div id="no_orders">
+            <p>Aucun achat n'a été effectué.</p>
+        </div>
+    {% endif %}
+    <div id="orders">
+        {% for order in orders %}
+            <div class="order searching_items">
+                <div class="email"><p>{{ order.email }}</p></div> 
+                <div class="username searching_property"><p>{{ order.username }}</p></div>
+                <div class="product"><p>{{ order.productName }}</p></div>
+                <div class="quantity"><p>{{ "%.2f" % order.quantite }} kg</p></div>
+                <div class="price"><p>Prix : {{ "%.2f" % order.cout }} {{ garden.moneyName}}</p></div>
+                <div class="date_achat"><p>Date d&#39;achat : <span class="date">{{ order.dateAchat }}</span></p></div>
+                <div class="complete_order_container">
+                    <form method="post" action="{{ url_for('controller.confirm_order', order_id= order.idCommande ) }}">
+                        <input type="hidden" name="id" value="{{ order.id }}">
+                        <input type="submit" value="Finaliser la commande" class="complete_order">
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/research_bar.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/orders.js') }}"></script>
+{% endblock %}

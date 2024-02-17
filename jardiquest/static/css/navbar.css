@@ -1,0 +1,133 @@
+.topnav {
+    background-color: var(--background-third);
+    align-items: center;
+    overflow: hidden;
+    padding: 20px 20px 15px 20px;
+    text-align: center;
+}
+
+.active {
+    color: var(--brown-orange);
+}
+
+.active:hover {
+    color: var(--brown-orange);
+}
+
+.topnav a {
+    margin: 0 18px;
+    text-align: center;
+    text-decoration: none;
+    font-size: x-large;
+    white-space: nowrap;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+.topnav > a:hover:not(.active) {
+    color: var(--taupe);
+}
+
+
+.new-line {
+    display: none;
+}
+
+.icon-user {
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+.icon-user img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-jardiquest {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.logo-jardiquest img {
+    width: 40px;
+    height: 40px;
+}
+
+.icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.icon {
+    padding: 0;
+    margin: 0;
+}
+
+.portal-rainbow {
+    background-image: url("/static/image/header/rainbow-big.svg");
+    background-repeat: repeat-x;
+    height: 29px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.invert-rainbow {
+    -moz-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
+@media screen and (max-width: 650px) {
+    .topnav a:not(.icon):not(.not-responsive) {
+        display: none;
+    }
+    .topnav a.icon {
+        display: inline;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .topnav.responsive {
+        position: relative;
+    }
+    .topnav.responsive .icon,
+    .topnav.responsive .not-responsive {
+        border: none;
+        padding: 0;
+    }
+    .topnav.responsive .icon {
+        display: flex;
+        justify-content: center;
+    }
+    .topnav.responsive .icon img {
+    }
+    .topnav.responsive .active {
+        display: none;
+    }
+    .topnav.responsive a:not(.icon):not(.not-responsive) {
+        display: block;
+        padding: 10px 5px;
+        margin: 0;
+        border-top: 1px solid var(--green);
+    }
+    .topnav.responsive {float: none;}
+    .topnav.responsive {position: relative;}
+    .topnav.responsive {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .topnav .not-responsive {
+        display: none;
+    }
+}

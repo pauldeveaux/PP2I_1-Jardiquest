@@ -1,0 +1,233 @@
+{% extends "_base.html" %}
+{% set active='garden' %}
+{% include "_navbar.html" %}
+{% block content %}
+
+<title>Jardin</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/garden.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/flash_messages_modal.js') }}"></script>
+
+{% with messages = get_flashed_messages(category_filter=["error"]) %}
+{% if messages %}
+<div id="flash_messages">
+    <p id="category_message" hidden>Erreur</p>
+    <p id="flash_message" hidden>{{ messages[0] }}</p>
+    <div id="flash_message_buttons" hidden>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+    </div>
+</div>
+{% endif %}
+{% endwith %}
+
+<div class="portal-container">
+    <div class="handler-display-data">
+        <div class="top">
+                {% set name=jardin.name %}
+                {% if name|length != 0 %}
+                <div class="attributs">
+                    <h1 class="garden-name">{{ jardin.name }}</h1>
+                </div>
+
+                <div class="align-garden-image">
+                    {% if ispicture %}
+                     <img src="{{ url_for('static', filename='upload/garden/' + jardin.idJardin) }}" class="display-garden">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='image/icon/default-garden.png') }}" class="display-garden">
+                    {% endif %}
+                </div>
+
+
+                <p class="description-garden">{{jardin.description.replace('\n', '<br>') | safe}}</p>
+
+                <div class="money_city">
+                    <b class="brown-orange-style">Adresse :</b>
+                    <span>{{jardin.adresse}} {{jardin.ville}}</span>
+                    <br>
+                    <b class="brown-orange-style">Role :</b>
+                    <span>{{user.role}}</span>
+                    <br>
+                    <b class="brown-orange-style">Monnaie :</b>
+                    <span>{{jardin.moneyName}}</span>
+                    <br>
+                    <b class="brown-orange-style">Participants :</b>
+                    <span>{{jardin.nbParticipants}}</span>
+                </div>
+            {% else %}
+                <p>Vous n'avez pas de jardin. <br> Voulez-vous en créer un ?</p>
+            {% endif %}
+
+             <div class="right">
+
+            {% set idJardin=user.idJardin %}
+
+            <!-- To create a garden you musn't have garden -->
+            {% if idJardin|length == 0 %}
+                <a href="{{url_for('controller.new_garden')}}"><button class="button_edit">Nouveau</button></a>
+            {% endif %}
+
+            <!-- To modify it must be your own garden -->
+            {% if user.role == 'Proprietaire' %}
+                {% if idJardin|length != 0 %}
+                <a href="{{url_for('controller.modify_garden')}}"><button class="button_edit">Modifier</button></a>
+                {% endif %}
+            {% endif %}
+
+            <!-- To leave a garden we must be a participant that is in a garden -->
+            {% if idJardin|length != 0 %}
+                {% if user.role == 'Participant' %}
+                <a href="{{url_for('controller.leave',id=jardin.idJardin)}}"><button class="button_edit leave-garden">Quitter</button></a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        </div>
+
+    </div>
+    {% if idJardin|length == 0 %}
+        <div class="bottom">
+            <span>
+                <b class="brown-orange-style">Trouver un jardin :</b> <br>
+            </span>
+            <form method="POST" class="display_form">
+                <input class="input" type="text" name="filtreNom" placeholder="Nom">
+                <input class="input" type="text" name="filtreDescription" placeholder="Description">
+                <input class="input" type="text" name="filtreMonnaie" placeholder="Monnaie">
+                <input class="input" type="text" name="filtreVille" placeholder="Ville">
+                <input class="input" type="text" name="filtreAdresse" placeholder="Adresse">
+                <button class="button" type="submit">Chercher</button>
+            </form>
+            <table id="table" class="table-all">
+                <thead>
+                    <tr>
+                        <th>Nom du jardin</th>
+                        <th>Description</th>
+                        <th>Monnaie</th>
+                        <th>Ville</th>
+                        <th>Adresse</th>
+                        <th>Participants</th>
+                        {% if user.role == 'Participant' %}
+                        <th>Rejoindre</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody id="body">
+                </tbody>
+            </table>
+            <div class="find"><button onclick="previousPage()">Précedent</button>
+                <p id="resultats"></p><button onclick="nextPage()">Suivant</button>
+            </div>
+        </div>
+    {% endif %}
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="brown-orange-style">Changer de jardin</h4>
+                <p id="idGarden" hidden></p>
+            </div>
+            <div class="modal-body">
+                <p>Voulez vous vraiment rejoindre ce jardin ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="button" onclick="changeGarden()" class="btn btn-default">Rejoindre</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var init = -10
+    var counts = JSON.parse('{{jsTable|tojson|safe}}')
+    console.log(counts)
+    const sizeCounts = '{{total}}'
+    const role = '{{user.role}}'
+    numberItems = 10
+    nextPage()
+
+    function changeId(id) {
+        var element = document.getElementById('idGarden');
+        element.innerHTML = id;
+    }
+
+    function changeGarden() {
+        var element = document.getElementById('idGarden');
+        link = '/change/' + element.innerHTML
+        window.location = link;
+    }
+
+    function emptyTable() {
+        elt = document.getElementById('body')
+        elt.innerHTML = ""
+    }
+
+    // next page is used to display the nexts rows in the table
+    function nextPage() {
+        if (init + numberItems < sizeCounts) {
+            init = init + numberItems
+            emptyTable()
+            elt = document.getElementById('body')
+            liste = counts.slice(init, init + numberItems)
+            changeResultat(init + numberItems)
+            liste.forEach(
+                element => addRow(element, elt)
+            );
+        }
+    }
+
+    function previousPage() {
+        if (init - numberItems >= 0) {
+            emptyTable()
+            elt = document.getElementById('body')
+            listePrev = counts.slice(init - numberItems, init)
+            changeResultat(init)
+            listePrev.forEach(
+                element => addRow(element, elt)
+            );
+            init = init - numberItems
+        }
+    }
+
+    function chooseButton(row) {
+        const choose = '<button type="button" onclick="changeId(\'' + row[6] + '\')" data-toggle="modal" data-target="#myModal">Choisir</button>'
+        return choose
+    }
+
+    function changeResultat(displayed) {
+        res = document.getElementById('resultats')
+        res.innerHTML = 'Résultats : ' + Math.min(displayed, sizeCounts) + '/' + sizeCounts
+    }
+
+    // use to insert a row in the table
+    function addRow(row, elt) {
+
+        if (role == 'Participant') {
+            if (!row[6].includes('button type="button"')) {
+                choose = chooseButton(row)
+                row.pop()
+                row.push(choose)
+            }
+        } else {
+            row = row.slice(0, 6)
+        }
+
+        var ligne = elt.insertRow(-1);
+
+        row.forEach(
+            element => ligne.insertCell(-1).innerHTML = element,
+        );
+
+        var table = document.getElementById('body');
+        table.setAttribute("class", "cells");
+    }
+</script>
+{% endblock %}

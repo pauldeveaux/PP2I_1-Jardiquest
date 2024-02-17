@@ -1,0 +1,45 @@
+.portal-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.centered-element {
+    margin: auto;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--background-secondary);
+}
+
+.portal-rainbow {
+    background-image: url("/static/image/header/rainbow-big.svg");
+    background-repeat: repeat-x;
+    height: 29px;
+}
+
+.invert-rainbow {
+    -moz-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
+.content {
+    padding: 2em;
+    text-align: center;
+}
+
+.title-page {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--error)
+}
+
+.content {
+    font-size: 30px;
+}
+

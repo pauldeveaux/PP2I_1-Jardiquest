@@ -1,0 +1,124 @@
+html{
+    min-height: 100%;
+    display : flex;
+}
+
+body{
+    flex: 1;
+}
+
+#quest{
+    margin: 50px 2% 80px 2%;
+    min-height: 69%;
+    border-radius: 10px;
+    background-color: var(--background-secondary);
+    position:relative;
+    padding-bottom: 2em;
+}
+
+#quest_header{
+    display: grid;
+    column-gap : 10px;
+    margin : 0 50px 30px 0;
+    grid-template-columns: 60px 1fr 1fr;
+    padding-top : 15px;
+}
+
+#back_arrow{
+    grid-column: 1;
+    grid-row: 1/3;
+    width: 40px;
+    height: 40px;
+    margin-left : 20px;
+    margin-right : 10px;
+    filter: invert(42%) sepia(4%) saturate(2457%) hue-rotate(54deg) brightness(93%) contrast(81%);
+}
+
+#back_arrow:hover{
+    cursor: pointer;
+    filter: invert(48%) sepia(96%) saturate(274%) hue-rotate(352deg) brightness(98%) contrast(91%);
+}
+
+
+#quest_title{
+    font-size: 1.5em;
+    grid-column: 2;
+    grid-row: 1;
+    text-decoration: underline;
+    display: inline-block;
+}
+
+#time_left{
+    display:flex;
+    justify-self: end;
+    grid-column: 3;
+    grid-row : 1;
+    font-size: 1.3em;
+}
+
+#time_left p{
+    align-self: flex-end;
+    display: inline-block;
+    color : var(--brown-orange);
+}
+
+#estimated_time{
+    grid-row : 2;
+    grid-column: 2;
+    display: block;
+}
+
+#estimated_time p{
+    color: grey;
+}
+
+#quest_content{
+    margin : 0 15px 30px 30px;
+}
+
+#quest_description{
+    width: 80%;
+    font-size: 1.3em;
+    display: block;
+    text-align: justify;
+}
+
+#reward{
+    position:absolute;
+    bottom:0;
+    font-size: 1.2em;
+    margin-top : 20px;
+    margin-left : 8%;
+    padding-bottom: 20px;
+}
+
+#reward p{
+    color : var(--taupe);
+}
+
+
+#buttons_quest{
+    text-align: center;
+    position: fixed;
+    bottom: 2%;
+    right: 5%; 
+    padding : 2px;
+
+}
+
+#buttons_quest input{
+    border: 1px solid var(--brown-orange);   
+    color : var(--brown-orange);
+    border-radius: 5px;
+    width : 185px;
+}
+
+#buttons_quest input:hover{
+    background-color: var(--brown-orange);
+    color : white;
+    opacity: 0.9;
+}
+
+#button_finish_quest{
+    margin-top: 5px;
+}

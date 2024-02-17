@@ -1,0 +1,182 @@
+.portal-container {
+    align-self: center;
+    width: 100vw;
+    display: flex;
+    padding: 2em 10%;
+}
+
+.display-user {
+    text-align: center;
+    margin: 1em 1em 0 1em;
+}
+
+.litle-hr {
+    margin: 1px 15% 2em;
+}
+
+.align-user-icon {
+    text-align: center;
+}
+
+.centered-element {
+    margin: auto;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--background-secondary);
+}
+
+.input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--green);
+}
+
+.input:focus {
+    outline: 1px dotted var(--green);
+}
+
+.button-panel {
+    margin: 2em 0;
+    display: flex;
+    flex-basis: 33%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button-panel > form > button,
+.button-panel > button {
+    padding: 0.6em;
+    margin: 0.2em 1em;
+    font-size: x-large;
+    cursor: pointer;
+    border: 1px solid var(--background-third);
+    color: var(--background-secondary);
+    border-radius: 9px;
+}
+
+.handler-display-data {
+    display: grid;
+    justify-content: center;
+    margin: auto auto auto 5%;
+    grid-auto-flow: column;
+    grid-gap: 50px;
+    grid-template-rows: 60px 60px 60px;
+    grid-template-columns: 49% 49%;
+    padding: 10px;
+}
+
+.handler-display-data > div {
+    margin: 0.8em;
+    font-size: large;
+    box-sizing: border-box;
+}
+
+.handler-display-data div b {
+    color: var(--brown-orange);
+}
+
+.display-name {
+    font-size: xx-large;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.green {
+    background: var(--green);
+}
+
+.red {
+    background: var(--error);
+}
+
+.third{
+    background: var(--brown-orange);
+}
+
+.table-column {
+     grid-area: 1 / 2 / 4 / 2;
+}
+
+.table-participating {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    overflow-y : scroll;
+    margin : 0% 10% 0% 0%;
+    height: 100%;
+}
+
+
+
+.table-participating .table-header .table-row {
+    background-color: var(--green);
+    text-align: center;
+    border : 2px solid var(--green);
+    display: flex;
+    flex-direction: row;
+}
+
+.table-participating .table-element-principal,
+.table-participating .table-element-secondary {
+    padding: 12px 15px;
+}
+
+.table-participating .table-body .table-row {
+    border-right: 2px solid var(--green) ;
+    border-left: 2px solid var(--green);
+    border-bottom: thin solid var(--green);
+    text-align: center;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.table-row .name {
+    width: 50%;
+}
+
+.table-row .balance {
+    width: 20%;
+}
+
+.table-row .date-recruitment {
+    width: 30%;
+}
+
+/*change the background when even*/
+.table-participating .table-body .table-row:nth-of-type(even) {
+    background-color: var(--background-primary);
+}
+
+.table-participating .table-body .table-row:last-of-type {
+    border-bottom: 2px solid var(--green);
+}
+
+.form-add-quest {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-add-quest > .big {
+    margin: 1% 10%;
+}
+
+.form-add-quest > .small {
+    margin: 1% 30%;
+    text-align: center;
+    font-size: smaller;
+}
+
+.inline {
+    display: flex;
+    flex-direction: row;
+}
+
+.inline > p {
+    padding:0% 1%;
+}
+
+.not_required {
+    font-style: italic;
+}

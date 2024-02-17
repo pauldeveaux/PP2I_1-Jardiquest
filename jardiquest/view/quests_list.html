@@ -1,0 +1,61 @@
+{% extends "_base.html" %}
+{% block content %}
+
+{% set active="quests" %}
+{% include "_navbar.html" %}
+
+
+
+<title>Quêtes</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/quests/quests_list.css') }}">
+{% block css %}{% endblock %}
+
+<div class="container">
+    <div id="quest_buttons_container">
+        <a class="quest_button" id="button_available_quests" href="{{ url_for('controller.list_garden_quests')}}">Quêtes disponibles</a> 
+        <a class="quest_button" id="button_my_quests" href="{{ url_for('controller.list_user_quests')}}">Mes quêtes</a>
+    </div>
+    
+    
+    {% if quests | length== 0 %}
+        {% block message_no_quest required %}{% endblock %} 
+    {% else %}
+    <div class="quests_container">
+        
+        {% for quest in quests %}    
+            {% set url = url_for('controller.display_quest', quest_id=quest.idQuete) %} 
+            <div class="quest" style="cursor: pointer;" onclick="window.location='{{url}}';"> 
+                <div class="quest_title">
+                    {{ quest.title }}
+                </div>  
+                <div class="time_left">
+                        {% set timeLeft = quest.timeBeforeExpiration - (today - quest.startingDate).days %}
+                        <p>Temps restant : {{ timeLeft }} {% if timeLeft > 1 %} jours {% else %} jour {% endif %}</p>
+                </div> 
+
+                <div class="estimated_time">
+                    {% if quest.estimatedTime %}
+                        {% set minutes = quest.estimatedTime%60 %}
+                        {% set hours = quest.estimatedTime//60 %}
+
+                        
+                            <p>
+                                Temps estimé :
+                                {% if hours > 0 %}
+                                     {{ hours }}h
+                                {% endif %}
+                                {{ minutes }}min
+                            </p>
+                        
+                    {% endif %}
+                </div>
+
+                <div class="reward">
+                    <p>{{ quest.reward }} {{ garden.moneyName }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+</div> 
+{% endblock %}

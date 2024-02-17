@@ -1,0 +1,7 @@
+#button_my_quests:hover{
+    color : var(--taupe);
+}
+
+#button_available_quests{
+    color: var(--brown-orange);
+}   

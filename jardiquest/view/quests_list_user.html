@@ -1,0 +1,11 @@
+{% extends "quests_list.html" %}
+
+<title>Vos Quêtes</title>
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view/quests/user_quests_list.css') }}">
+{% endblock %}
+
+{% block message_no_quest %}
+<p id="message_no_quest">Vous n'avez pas encore accepté de quête</p>
+{% endblock %}

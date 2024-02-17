@@ -1,0 +1,56 @@
+{% extends "_base.html" %}
+{% set active='handlegarden' %}
+{% include "_navbar.html" %}
+{% block content %}
+
+<title>Créer une quête</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/handle_garden.css') }}">
+
+
+<div class="portal-container">
+    <div class="centered-element">
+        <div class="align-user-icon">
+            <br>
+            <span class="display-name">Créer une quête<span>
+        </div>
+        <hr class="litle-hr">
+        <div>
+            <form class="form-add-quest" method="post" action="/handle_garden/add_quest">
+                <input class="big" type="text" name="title" placeholder="Titre de la quête" required>
+                <textarea class="big" type="text" maxlength="1000" name="description" placeholder="Description de la quête"></textarea>
+                <div class="inline big">
+                    <p>Récompense de la quête : </p>
+                    <input class="small" type="number" min=0 name="sum" required> 
+                    <p> {{jardin.moneyName}}</p>
+                </div>
+                <div class="inline big">
+                    <p>Date de début de la quête : </p>
+                    <input id="datePicker" class="small" type="date" name="start" required>
+                </div>
+                <div class="inline big not_required">
+                    <p>Temps avant expiration de la quête (en jour) : </p>
+                    <input class="small" type="number" min=1 name="expiration">
+                </div>
+                <div class="inline big not_required">
+                    <p>Durée estimée de la quête (en min) : </p>
+                    <input class="small" type="number" min=0 name="duration">
+                </div>
+                <div class="inline big not_required">
+                    <p>Quête périodique : </p>
+                    <input type="checkbox" class="small" name="periodic">
+                </div>
+                
+                <p class="small not_required">(Les données en italique ne sont pas obligatoires)</p>
+                <hr class="litle-hr">
+                <div class="button-panel">
+                    <button class="green small" type="submit">Créer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('datePicker').valueAsDate = new Date();
+</script>
+
+{% endblock %}

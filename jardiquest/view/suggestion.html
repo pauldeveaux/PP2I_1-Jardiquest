@@ -1,0 +1,95 @@
+{% extends "_base.html" %}
+{% block content %}
+
+{% set active="market" %}
+{% include "_navbar.html" %}
+
+<title>Suggestion</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view/suggestion.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="info_panier">
+    <div>
+        <p class="prix_panier">Prix du panier : <span class="cost">{{"%.2f" % prix}} {{ jardin.moneyName }}</span></p>
+        <div class="settings">
+            <p class="prix_panier">Prix maximum :</p>
+            <form action="{{ url_for('controller.suggestion') }}" method="post" class="limit_form">
+                <input type="number" name="balance" class="buy_limit" step="0.1" min="0.0" max="{{ user.balance }}"
+                    placeholder='{{ "%.2f" % user.balance }}'>
+                <input hidden type="submit" class="buy_button" value="Calculer">
+            </form>
+        </div>
+    </div>
+    <div class="message_suggestion">Cette suggestion maximise la diversité des produits et le prix pour votre solde
+    </div>
+    <div id="user_golds">
+        <p>{{ user.balance }} {{ jardin.moneyName }}</p>
+    </div>
+    <div id="market_top">
+        <p>Panier recommandé :</p>
+    </div>
+    <div></div>
+    <div class="buy">
+        {% if length!=0 %}
+        <button type="button" data-toggle="modal" data-target="#myModal">Acheter</button>
+        {% endif %}
+    </div>
+</div>
+<div id="market">
+    {% if length==0 %}
+    <div id="market_no_product">
+        <p>Aucune recommandation possible, vérifiez votre solde ou vérifiez la disponibilité des produits</p>
+    </div>
+    {% else %}
+    <div id="market_products">
+        {% for i in range(0,length) %}
+        {% set url = url_for('controller.market_product', product = produits[i].name ) %}
+        <div class="product searching_items" style="cursor: pointer;" onclick="window.location='{{url}}';">
+            <img src="{{ url_for('static', filename='image/vegetables/' + produits[i].imagePath) }}"
+                alt="{{ produits[i].name }}" class="product_img">
+
+            <div class="product_type">
+                <p class="type">{{ produits[i].type }}</p>
+            </div>
+
+            <div class="product_name searching_property">
+                <p class="name">{{ produits[i].name }}</a>
+            </div>
+
+            <div class="product_quantity">
+                <p>Quantité recommandée : <span class="quantity_float">{{ numbs[i] }}</span> lots de <span
+                        class="quantity_float">{{ recoltes[i].qtt_recommandee }} soit {{ "%.2f" %
+                        (numbs[i]*recoltes[i].qtt_recommandee) }}</span>kg</p>
+            </div>
+
+            <div class="product_cheaper_price">
+                <p><span class="price">Prix total : </span>{{ "%.2f" %
+                    (recoltes[i].cost*numbs[i]*recoltes[i].qtt_recommandee)}} {{ jardin.moneyName }}</p>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="brown-orange-style">Valider panier</h4>
+                <p id="idGarden" hidden></p>
+            </div>
+            <div class="modal-body">
+                <p>Voulez vous vraiment valider l'achat pour un prix de {{"%.2f" % prix}} {{ jardin.moneyName }}?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <a href="{{url_for('controller.buy',numbs=numbs,ids=ids)}}"><button type="button" class="btn btn-default">Acheter</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
